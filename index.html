@@ -1,0 +1,647 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Saini Tour & Travels - Agra</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --primary: #0ea5e9;
+      --primary-dark: #0284c7;
+      --secondary: #10b981;
+      --accent: #f59e0b;
+      --dark: #0f172a;
+      --light: #f8fafc;
+      --gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      --glass: rgba(255, 255, 255, 0.1);
+      --shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: #333;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* Animations */
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes slideInRight {
+      from {
+        opacity: 0;
+        transform: translateX(50px);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-10px); }
+    }
+
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+    }
+
+    @keyframes shimmer {
+      0% { background-position: -200px 0; }
+      100% { background-position: calc(200px + 100%) 0; }
+    }
+
+    .animate-fadeInUp {
+      animation: fadeInUp 0.8s ease-out forwards;
+    }
+
+    .animate-slideInRight {
+      animation: slideInRight 0.8s ease-out forwards;
+    }
+
+    .animate-float {
+      animation: float 3s ease-in-out infinite;
+    }
+
+    /* Header */
+    header {
+      background: rgba(15, 23, 42, 0.95);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      color: #fff;
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      transition: all 0.3s ease;
+    }
+
+    header.scrolled {
+      background: rgba(15, 23, 42, 0.98);
+      padding: 0.8rem 2rem;
+    }
+
+    header h1 {
+      font-size: 1.8rem;
+      font-weight: 700;
+      background: linear-gradient(135deg, #0ea5e9, #10b981);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .btn-whatsapp {
+      background: linear-gradient(135deg, #25D366, #128C7E);
+      color: #fff;
+      padding: 0.8rem 1.5rem;
+      border: none;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .btn-whatsapp::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+      transition: left 0.5s;
+    }
+
+    .btn-whatsapp:hover::before {
+      left: 100%;
+    }
+
+    .btn-whatsapp:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(37, 211, 102, 0.6);
+    }
+
+    /* Hero Section */
+    .hero {
+      background: 
+        linear-gradient(135deg, rgba(15, 23, 42, 0.7), rgba(30, 41, 59, 0.8)),
+        url('https://images.unsplash.com/photo-1604014238254-67f2a31c48da?auto=format&fit=crop&w=1600&q=80') center/cover no-repeat;
+      height: 100vh;
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 2rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: radial-gradient(circle at 30% 50%, rgba(14, 165, 233, 0.3) 0%, transparent 50%);
+      animation: pulse 4s ease-in-out infinite;
+    }
+
+    .hero-content {
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(20px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      padding: 3rem;
+      border-radius: 20px;
+      max-width: 600px;
+      position: relative;
+      z-index: 2;
+      box-shadow: var(--shadow);
+    }
+
+    .hero-content h2 {
+      font-size: 3.5rem;
+      margin-bottom: 1rem;
+      font-weight: 700;
+      background: linear-gradient(135deg, #ffffff, #e2e8f0);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      line-height: 1.2;
+    }
+
+    .hero-content p {
+      margin-bottom: 2rem;
+      font-size: 1.2rem;
+      opacity: 0.9;
+    }
+
+    /* Sections */
+    section {
+      padding: 5rem 2rem;
+      max-width: 1200px;
+      margin: auto;
+      position: relative;
+    }
+
+    section h2 {
+      text-align: center;
+      font-size: 2.5rem;
+      margin-bottom: 3rem;
+      color: white;
+      font-weight: 700;
+      position: relative;
+    }
+
+    section h2::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80px;
+      height: 4px;
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      border-radius: 2px;
+    }
+
+    /* Cards */
+    .services, .why-us, .gallery-grid, .testimonials {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      margin-top: 3rem;
+    }
+
+    .card {
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(20px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      padding: 2rem;
+      border-radius: 20px;
+      box-shadow: var(--shadow);
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+      color: white;
+    }
+
+    .card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(135deg, rgba(255,255,255,0.1), rgba(255,255,255,0.05));
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .card:hover::before {
+      opacity: 1;
+    }
+
+    .card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 25px 50px rgba(0,0,0,0.3);
+    }
+
+    .card h3 {
+      font-size: 1.3rem;
+      margin-bottom: 1rem;
+      color: var(--accent);
+      font-weight: 600;
+    }
+
+    /* Why Us Cards */
+    .why-us .card {
+      text-align: center;
+      padding: 1.5rem;
+      font-weight: 600;
+      font-size: 1.1rem;
+      background: linear-gradient(135deg, rgba(16, 185, 129, 0.2), rgba(14, 165, 233, 0.2));
+    }
+
+    /* Gallery */
+    .gallery-grid {
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    }
+
+    .gallery-item {
+      position: relative;
+      overflow: hidden;
+      border-radius: 20px;
+      height: 250px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .gallery-item:hover {
+      transform: scale(1.05);
+    }
+
+    .gallery-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.3s ease;
+    }
+
+    .gallery-item:hover img {
+      transform: scale(1.1);
+    }
+
+    .gallery-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(45deg, rgba(14, 165, 233, 0.8), rgba(16, 185, 129, 0.8));
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-weight: 600;
+      font-size: 1.1rem;
+    }
+
+    .gallery-item:hover .gallery-overlay {
+      opacity: 1;
+    }
+
+    /* Testimonials */
+    .testimonial {
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(20px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      padding: 2rem;
+      border-radius: 20px;
+      position: relative;
+      color: white;
+      transition: all 0.3s ease;
+    }
+
+    .testimonial::before {
+      content: '"';
+      position: absolute;
+      top: -10px;
+      left: 20px;
+      font-size: 4rem;
+      color: var(--accent);
+      opacity: 0.5;
+    }
+
+    .testimonial:hover {
+      transform: translateY(-5px);
+    }
+
+    .testimonial p {
+      font-style: italic;
+      margin-bottom: 1rem;
+      font-size: 1.1rem;
+    }
+
+    .testimonial span {
+      display: block;
+      font-weight: 600;
+      color: var(--accent);
+    }
+
+    /* Contact Section */
+    .contact-info {
+      text-align: center;
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(20px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      padding: 3rem;
+      border-radius: 20px;
+      color: white;
+      font-size: 1.2rem;
+      line-height: 2;
+    }
+
+    /* Footer */
+    footer {
+      background: rgba(15, 23, 42, 0.95);
+      backdrop-filter: blur(20px);
+      color: white;
+      text-align: center;
+      padding: 2rem;
+      margin-top: 3rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    /* Floating WhatsApp */
+    .whatsapp-float {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      background: linear-gradient(135deg, #25D366, #128C7E);
+      color: white;
+      padding: 1rem 1.5rem;
+      border-radius: 50px;
+      font-weight: 600;
+      box-shadow: 0 8px 25px rgba(37, 211, 102, 0.4);
+      text-decoration: none;
+      z-index: 1000;
+      transition: all 0.3s ease;
+      animation: float 3s ease-in-out infinite;
+    }
+
+    .whatsapp-float:hover {
+      transform: translateY(-5px) scale(1.05);
+      box-shadow: 0 15px 35px rgba(37, 211, 102, 0.6);
+    }
+
+    /* Scroll animations */
+    .scroll-animate {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all 0.8s ease;
+    }
+
+    .scroll-animate.animate {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .hero-content h2 {
+        font-size: 2.5rem;
+      }
+      
+      section {
+        padding: 3rem 1rem;
+      }
+      
+      .services, .why-us, .gallery-grid, .testimonials {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+      }
+      
+      header {
+        padding: 1rem;
+      }
+      
+      header h1 {
+        font-size: 1.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header id="header">
+    <h1 class="animate-fadeInUp">Saini Tour & Travels</h1>
+    <a href="https://wa.me/919639758039" class="btn-whatsapp animate-slideInRight" target="_blank">Book on WhatsApp</a>
+  </header>
+
+  <section class="hero">
+    <div class="hero-content animate-fadeInUp">
+      <h2>Reliable Travel from Agra</h2>
+      <p>Affordable, Comfortable, and On-Time Travel Services for Tourists, Groups, and Families.</p>
+      <a href="https://wa.me/919068336874" class="btn-whatsapp" target="_blank">Book Now</a>
+    </div>
+  </section>
+
+  <section class="scroll-animate">
+    <h2>Our Services</h2>
+    <div class="services">
+      <div class="card">
+        <h3>Private Tour Bookings</h3>
+        <p>Book full-day tours for Taj Mahal, Mathura, Fatehpur Sikri and more with personalized itineraries.</p>
+      </div>
+      <div class="card">
+        <h3>Group Travel</h3>
+        <p>College trips, school excursions, or family travel made easy with comfortable seating arrangements.</p>
+      </div>
+      <div class="card">
+        <h3>Airport Transfers</h3>
+        <p>Pick & drop to Delhi or Agra airports at affordable prices with punctual service guaranteed.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="scroll-animate">
+    <h2>Why Choose Us?</h2>
+    <div class="why-us">
+      <div class="card">✔ Clean & Safe Vehicles</div>
+      <div class="card">✔ Experienced Drivers</div>
+      <div class="card">✔ On-Time Guarantee</div>
+      <div class="card">✔ 24/7 WhatsApp Support</div>
+      <div class="card">✔ Group Discounts</div>
+      <div class="card">✔ AC/Non-AC Available</div>
+    </div>
+  </section>
+
+  <section class="scroll-animate">
+    <h2>Gallery</h2>
+    <div class="gallery-grid">
+      <div class="gallery-item">
+        <img src="bus.jpg" alt="Luxury Bus">
+        <div class="gallery-overlay">Luxury Buses</div>
+      </div>
+      <div class="gallery-item">
+        <img src="image.png" alt="Tour Bus">
+        <div class="gallery-overlay">Tour Vehicles</div>
+      </div>
+      <div class="gallery-item">
+        <img src="tajmahal.png" alt="Taj Mahal">
+        <div class="gallery-overlay">Taj Mahal Tours</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="scroll-animate">
+    <h2>Customer Reviews</h2>
+    <div class="testimonials">
+      <div class="testimonial">
+        <p>Very clean ride and helpful driver. Best tour from Agra to Mathura! The service exceeded our expectations.</p>
+        <span>- Ramesh S.</span>
+      </div>
+      <div class="testimonial">
+        <p>Easy WhatsApp booking and safe journey. Highly recommended for families and groups.</p>
+        <span>- Neha G.</span>
+      </div>
+      <div class="testimonial">
+        <p>Affordable and punctual. Booked again for my parents' trip. Excellent customer service!</p>
+        <span>- Ankit J.</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="scroll-animate">
+    <h2>Contact Us</h2>
+    <div class="contact-info">
+      📍 Agra, Uttar Pradesh<br>
+      📞 +91-9068336874<br>
+      💬 Available 24/7 on WhatsApp
+    </div>
+  </section>
+
+  <footer>
+    &copy; 2025 Saini Tour & Travels – Agra | All rights reserved
+  </footer>
+
+  <a href="https://wa.me/919068336874" class="whatsapp-float" target="_blank">📲 Book on WhatsApp</a>
+
+  <script>
+    // Header scroll effect
+    window.addEventListener('scroll', () => {
+      const header = document.getElementById('header');
+      if (window.scrollY > 100) {
+        header.classList.add('scrolled');
+      } else {
+        header.classList.remove('scrolled');
+      }
+    });
+
+    // Scroll animations
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('animate');
+        }
+      });
+    }, observerOptions);
+
+    document.querySelectorAll('.scroll-animate').forEach(el => {
+      observer.observe(el);
+    });
+
+    // Smooth scrolling for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        document.querySelector(this.getAttribute('href')).scrollIntoView({
+          behavior: 'smooth'
+        });
+      });
+    });
+
+    // Add loading animation
+    window.addEventListener('load', () => {
+      document.body.style.opacity = '1';
+    });
+
+    // Add click ripple effect to cards
+    document.querySelectorAll('.card').forEach(card => {
+      card.addEventListener('click', function(e) {
+        const ripple = document.createElement('div');
+        const rect = this.getBoundingClientRect();
+        const size = Math.max(rect.width, rect.height);
+        const x = e.clientX - rect.left - size / 2;
+        const y = e.clientY - rect.top - size / 2;
+        
+        ripple.style.cssText = `
+          position: absolute;
+          width: ${size}px;
+          height: ${size}px;
+          left: ${x}px;
+          top: ${y}px;
+          background: rgba(255,255,255,0.3);
+          border-radius: 50%;
+          transform: scale(0);
+          animation: ripple 0.6s ease-out;
+          pointer-events: none;
+        `;
+        
+        this.appendChild(ripple);
+        
+        setTimeout(() => {
+          ripple.remove();
+        }, 600);
+      });
+    });
+
+    // Add ripple animation keyframes
+    const style = document.createElement('style');
+    style.textContent = `
+      @keyframes ripple {
+        to {
+          transform: scale(2);
+          opacity: 0;
+        }
+      }
+    `;
+    document.head.appendChild(style);
+  </script>
+</body>
+</html>

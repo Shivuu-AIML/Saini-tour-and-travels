@@ -1,0 +1,108 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f9f9f9;
+  color: #333;
+}
+
+/* Navbar */
+nav {
+  background-color: #003366;
+  padding: 1rem 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+nav img {
+  height: 50px;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  gap: 2rem;
+}
+
+nav ul li a {
+  color: white;
+  text-decoration: none;
+  font-weight: 600;
+  transition: 0.3s;
+}
+
+nav ul li a:hover {
+  color: #ff6600;
+}
+
+/* Hero Section */
+.hero {
+  text-align: center;
+  padding: 5rem 2rem 2rem;
+}
+
+.hero button {
+  padding: 0.9rem 2rem;
+  font-size: 1.1rem;
+  background-color: #ff6600;
+  border: none;
+  color: white;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.hero button:hover {
+  background-color: #e65c00;
+}
+
+/* Services Section */
+.services {
+  text-align: center;
+  padding: 3rem 1rem;
+}
+
+.services h2 {
+  font-size: 2rem;
+  margin-bottom: 2rem;
+  font-weight: 700;
+  color: #222;
+}
+
+.service-cards {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+}
+
+.card {
+  background-color: #fff;
+  padding: 1.5rem;
+  width: 280px;
+  border-radius: 12px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+}
+
+.card h3 {
+  font-size: 1.2rem;
+  color: #003366;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+}
+
+.card p {
+  font-size: 0.95rem;
+  color: #555;
+}
